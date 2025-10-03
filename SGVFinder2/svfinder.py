@@ -59,6 +59,8 @@ def get_sample_map(
             if pos2 >= 0:
                 used_koef = used_koef / 2.0
                 ind2 = int((pos2 + (average_read_length / 2)) / bin_size)
+                if ind2 == int(lengthdb[dest_id] / bin_size) + 1:    #### fixing a scenario where the hit is very close to the end of the last bin. 
+                    ind2 = int(lengthdb[dest_id] / bin_size)             
                 bacid_maps[dest_id][ind2] += used_koef
 
             try:
